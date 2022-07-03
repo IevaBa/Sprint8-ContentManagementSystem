@@ -18,7 +18,8 @@ require_once 'templates/includes/header.php' ?>
 
     </div>
     <?php } ?>
-    <a class="archive-btn fs-5 d-block me-auto text-decoration-none text-center my-2" href="./?action=archive">Articles
+    <a class="archive-btn fs-5 d-block me-auto text-decoration-none text-center text-light my-2"
+        href="./?action=archive">Articles
         Archive</a>
 </div>
 

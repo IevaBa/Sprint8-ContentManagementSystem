@@ -1,3 +1,35 @@
+.website-nav {
+  background-color: #405a80;
+  color: whitesmoke;
+  box-shadow: 0 8px 6px -6px #7d5c84;
+  border-bottom: 0.8rem solid #b171be;
+}
 .wrapper {
   margin-bottom: 7rem;
+}
+.more-btn {
+  background: #b171be;
+  border-radius: 5px;
+  width: 5rem;
+  padding: 0.2rem 0.3rem;
+}
+.archive-btn {
+  background: #405a80;
+  border-radius: 5px;
+  width: 10rem;
+  padding: 0.3rem 0.5rem;
+}
+table tr td:first-child {
+  width: 3rem;
+}
+table tr td:last-child {
+  width: 7rem;
+}
+.footer-line {
+  border-top: 0.4rem solid #405a80;
+}
+.errorMessage {
+  color: #e1468e;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
 }
