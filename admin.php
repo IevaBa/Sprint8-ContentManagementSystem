@@ -17,6 +17,9 @@ switch ( $action ) {
   case 'logout':
     logout();
     break;
+case 'newArticle':
+    newArticle();
+    break;
   default:
     listArticles();
 }
@@ -49,6 +52,33 @@ function logout() {
   header( "Location: admin.php" );
 }
 
+function newArticle() {
+
+  $results = array();
+  $results['pageTitle'] = "New Article";
+  $results['formAction'] = "newArticle";
+
+  if ( isset( $_POST['saveChanges'] ) ) {
+
+    // User has posted the article edit form: save the new article
+    $article = new Article;
+    $article->storeFormValues( $_POST );
+    $article->insert();
+    header( "Location: admin.php?status=changesSaved" );
+
+  } elseif ( isset( $_POST['cancel'] ) ) {
+
+    // User has cancelled their edits: return to the article list
+    header( "Location: admin.php" );
+  } else {
+
+    // User has not posted the article edit form yet: display the form
+    $results['article'] = new Article;
+    require( TEMPLATE_PATH . "/admin/addArticle.php" );
+  }
+
+}
+
 function listArticles() {
   $results = array();
   $data = Article::getList();
@@ -58,6 +88,9 @@ function listArticles() {
 
   if ( isset( $_GET['error'] ) ) {
     if ( $_GET['error'] == "articleNotFound" ) $results['errorMessage'] = "Error: Article not found.";
+  }
+  if ( isset( $_GET['status'] ) ) {
+    if ( $_GET['status'] == "changesSaved" ) $results['statusMessage'] = "Your changes have been saved!";
   }
   require( TEMPLATE_PATH . "/admin/listArticles.php" );
 }

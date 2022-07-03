@@ -12,6 +12,10 @@ require_once 'templates/includes/header.php' ?>
     <div class="errorMessage pb-3 text-danger fw-bold"><?php echo $results['errorMessage'] ?></div>
     <?php } ?>
 
+    <?php if ( isset( $results['statusMessage'] ) ) { ?>
+    <div class="statusMessage pb-3 text-success fw-bold"><?php echo $results['statusMessage'] ?></div>
+    <?php } ?>
+
     <table class="table table-bordered table-striped">
         <thead>
             <tr>
@@ -43,7 +47,7 @@ require_once 'templates/includes/header.php' ?>
     <div class="fs-5 mb-2 me-auto">
         <p><?php echo $results['totalRows']?> article<?php echo ( $results['totalRows'] != 1 ) ? 's' : '' ?> in total.
         </p>
-        <a class="btn btn-success" href="#">Add New Article</a>
+        <a class="btn btn-success" href="admin.php?action=newArticle">Add New Article</a>
     </div>
 </div>
 
