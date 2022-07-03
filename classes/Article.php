@@ -119,7 +119,7 @@ class Article {
 
   public function insert() {
 
-    // Does the Article object already have an ID?
+    // checking id
     if ( !is_null( $this->id ) ) trigger_error ( "Article::insert(): Attempt to insert an Article object that already has its ID property set (to $this->id).", E_USER_ERROR );
 
     // Insert the Article
@@ -132,6 +132,22 @@ class Article {
     $st->bindValue( ":content", $this->content, PDO::PARAM_STR );
     $st->execute();
     $this->id = $conn->lastInsertId();
+    $conn = null;
+  }
+
+  /**
+  * DELETE ARTICLE
+  */
+
+  public function delete() {
+    // checking id
+    if ( is_null( $this->id ) ) trigger_error ( "Article::delete(): Attempt to delete an Article object that does not have its ID property set.", E_USER_ERROR );
+
+    // Delete the Article
+    $conn = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
+    $st = $conn->prepare ( "DELETE FROM articles WHERE id = :id LIMIT 1" );
+    $st->bindValue( ":id", $this->id, PDO::PARAM_INT );
+    $st->execute();
     $conn = null;
   }
 }

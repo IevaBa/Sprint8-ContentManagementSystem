@@ -38,7 +38,9 @@ require_once 'templates/includes/header.php' ?>
                 </td>
                 <td>
                     <a href="#"><span class="fa fa-pencil mx-3"></span></a>
-                    <a href="#"><span class="fa fa-trash mx-2"></span></a>
+                    <a href="admin.php?action=deleteArticle&amp;articleId=<?php echo $article->id ?>"
+                        onclick="return confirm('Are you sure you want to delete this Article?')"><span
+                            class="fa fa-trash mx-2"></span></a>
                 </td>
             </tr>
             <?php } ?>

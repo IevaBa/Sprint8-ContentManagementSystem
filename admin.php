@@ -17,8 +17,11 @@ switch ( $action ) {
   case 'logout':
     logout();
     break;
-case 'newArticle':
+  case 'newArticle':
     newArticle();
+    break;
+  case 'deleteArticle':
+    deleteArticle();
     break;
   default:
     listArticles();
@@ -76,7 +79,17 @@ function newArticle() {
     $results['article'] = new Article;
     require( TEMPLATE_PATH . "/admin/addArticle.php" );
   }
+}
 
+function deleteArticle() {
+
+  if ( !$article = Article::getById( (int)$_GET['articleId'] ) ) {
+    header( "Location: admin.php?error=articleNotFound" );
+    return;
+  }
+
+  $article->delete();
+  header( "Location: admin.php?status=articleDeleted" );
 }
 
 function listArticles() {
@@ -91,6 +104,7 @@ function listArticles() {
   }
   if ( isset( $_GET['status'] ) ) {
     if ( $_GET['status'] == "changesSaved" ) $results['statusMessage'] = "Your changes have been saved!";
+    if ( $_GET['status'] == "articleDeleted" ) $results['statusMessage'] = "Article successfully deleted!";
   }
   require( TEMPLATE_PATH . "/admin/listArticles.php" );
 }
