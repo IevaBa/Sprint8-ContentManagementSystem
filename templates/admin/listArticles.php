@@ -37,7 +37,8 @@ require_once 'templates/includes/header.php' ?>
                     <?php echo date('j M Y', $article->publicationDate)?>
                 </td>
                 <td>
-                    <a href="#"><span class="fa fa-pencil mx-3"></span></a>
+                    <a href="admin.php?action=editArticle&amp;articleId=<?php echo $article->id?>"><span
+                            class="fa fa-pencil mx-3"></span></a>
                     <a href="admin.php?action=deleteArticle&amp;articleId=<?php echo $article->id ?>"
                         onclick="return confirm('Are you sure you want to delete this Article?')"><span
                             class="fa fa-trash mx-2"></span></a>

@@ -20,6 +20,9 @@ switch ( $action ) {
   case 'newArticle':
     newArticle();
     break;
+  case 'editArticle':
+    editArticle();
+    break;
   case 'deleteArticle':
     deleteArticle();
     break;
@@ -78,6 +81,33 @@ function newArticle() {
     // User has not posted the article edit form yet: display the form
     $results['article'] = new Article;
     require( TEMPLATE_PATH . "/admin/addArticle.php" );
+  }
+}
+
+function editArticle() {
+
+  $results = array();
+  $results['pageTitle'] = "Edit Article";
+  $results['formAction'] = "editArticle";
+
+  if ( isset( $_POST['saveChanges'] ) ) {
+
+    if ( !$article = Article::getById( (int)$_POST['articleId'] ) ) {
+      header( "Location: admin.php?error=articleNotFound" );
+      return;
+    }
+
+    $article->storeFormValues( $_POST );
+    $article->update();
+    header( "Location: admin.php?status=changesSaved" );
+
+  } elseif ( isset( $_POST['cancel'] ) ) {
+
+    header( "Location: admin.php" );
+  } else {
+
+    $results['article'] = Article::getById( (int)$_GET['articleId'] );
+    require( TEMPLATE_PATH . "/admin/editArticle.php" );
   }
 }
 
