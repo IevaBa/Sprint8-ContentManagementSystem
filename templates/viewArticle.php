@@ -7,7 +7,7 @@ require_once 'templates/includes/header.php' ?>
         <small>posted <?php echo date('j F Y', $results['article']->publicationDate)?></small>
     </h4>
     <p><?php echo $results['article']->content?></p>
-    <a class="text-decoration-none text-secondary" href="<?php ?>./">&larr; Back</a>
+    <a class="text-decoration-none text-secondary" href="./">&larr; Back</a>
 </div>
 
 <?php 

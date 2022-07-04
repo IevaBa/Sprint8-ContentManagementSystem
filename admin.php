@@ -70,7 +70,7 @@ function newArticle() {
     $article = new Article;
     $article->storeFormValues( $_POST );
     $article->insert();
-    header( "Location: admin.php?status=changesSaved" );
+    header( "Location: admin.php?status=articleAdded" );
 
   } elseif ( isset( $_POST['cancel'] ) ) {
 
@@ -133,6 +133,7 @@ function listArticles() {
     if ( $_GET['error'] == "articleNotFound" ) $results['errorMessage'] = "Error: Article not found.";
   }
   if ( isset( $_GET['status'] ) ) {
+    if ( $_GET['status'] == "articleAdded" ) $results['statusMessage'] = "Article successfully added!";
     if ( $_GET['status'] == "changesSaved" ) $results['statusMessage'] = "Your changes have been saved!";
     if ( $_GET['status'] == "articleDeleted" ) $results['statusMessage'] = "Article successfully deleted!";
   }

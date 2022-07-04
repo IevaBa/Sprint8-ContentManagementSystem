@@ -6,14 +6,16 @@ require_once 'templates/includes/header.php' ?>
     <a href="admin.php?action=logout" ?>Log out</a>
 </p>
 <div
-    class="wrapper container d-flex flex-column align-items-center justify-content-center shadow p-3 pt-4 bg-body rounded">
+    class="wrapper container d-flex flex-column align-items-center justify-content-center shadow px-3 py-3 bg-body rounded">
+    <a class="archive-btn fs-5 d-block me-auto text-decoration-none text-center text-light mb-3 mt-2" href="./"
+        target="_blank">View Website</a>
 
     <?php if ( isset( $results['errorMessage'] ) ) { ?>
-    <div class="errorMessage pb-3 text-danger fw-bold"><?php echo $results['errorMessage'] ?></div>
+    <div class="errorMessage pb-3 alert alert-danger fw-bold"><?php echo $results['errorMessage'] ?></div>
     <?php } ?>
 
     <?php if ( isset( $results['statusMessage'] ) ) { ?>
-    <div class="statusMessage pb-3 text-success fw-bold"><?php echo $results['statusMessage'] ?></div>
+    <div class="statusMessage pb-3 alert alert-success fw-bold"><?php echo $results['statusMessage'] ?></div>
     <?php } ?>
 
     <table class="table table-bordered table-striped">
