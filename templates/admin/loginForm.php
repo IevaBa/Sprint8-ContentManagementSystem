@@ -15,11 +15,11 @@ require_once 'templates/includes/header.php' ?>
         <h2 class="mb-4 text-center">Login</h2>
         <div class="input-group">
             <label class="pt-2" for="username">User Name</label>
-            <input class="mt-2 px-2" type="text" name="username" required autofocus>
+            <input class="mt-2 px-2" type="text" placeholder="admin" name="username" required autofocus>
         </div>
         <div class="input-group">
             <label class="pt-2" for="password">Password</label>
-            <input class="mt-2 px-2 mb-4" type="password" name="password" required>
+            <input class="mt-2 px-2 mb-4" type="password" placeholder="1234" name="password" required>
         </div>
         <input class="submit-btn d-block ms-auto text-uppercase fs-6 py-2 px-3 border-0 rounded-3" type="submit"
             name="login" value="Login">
